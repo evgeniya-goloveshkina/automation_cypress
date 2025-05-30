@@ -1,0 +1,26 @@
+{
+  "name": "cypress_project1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "rm -r ./cypress/report/mochawesome-report/*.json",
+    "posttest": "npm run merge-reports && npm run generate-htmlreport",
+    "test": "npm run cypress-test || npm run posttest",
+    "cypress-test": "cypress run",
+    "merge-reports": "npx mochawesome-merge ./cypress/report/mochawesome-report/*.json > report1.json",
+    "generate-htmlreport": "npx marge report1.json --reportDir ./cypress/report --inline"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cypress": "^14.4.0",
+    "cypress-downloadfile": "^1.2.4"
+  },
+  "devDependencies": {
+    "cypress-file-upload": "^5.0.8",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^5.0.0"
+  }
+}
